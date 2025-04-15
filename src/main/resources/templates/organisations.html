@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Organisations</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container mt-4">
+  <h2 class="mb-4">Campagnes de dons</h2>
+  <div class="row" th:if="${organisations != null}">
+    <div class="col-md-4" th:each="org : ${organisations}">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title" th:text="${org.nom}">Nom</h5>
+          <p class="card-text" th:text="${org.description}">Description</p>
+          <p><strong>Status:</strong> <span th:text="${org.valide ? 'Validée' : 'En attente'}"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
